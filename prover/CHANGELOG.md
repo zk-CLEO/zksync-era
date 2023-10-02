@@ -1,5 +1,12 @@
 # Changelog
 
+## [7.1.2](https://github.com/matter-labs/zksync-era/compare/prover-v7.1.1...prover-v7.1.2) (2023-10-02)
+
+
+### Bug Fixes
+
+* Bumps webpki to fix RUSTSEC-2023-0052. ([#130](https://github.com/matter-labs/zksync-era/issues/130)) ([51e02cb](https://github.com/matter-labs/zksync-era/commit/51e02cb78cd56ecd9f5df31f2b590ba19d866e1b))
+
 ## [7.1.1](https://github.com/matter-labs/zksync-2-dev/compare/prover-v7.1.0...prover-v7.1.1) (2023-09-27)
 
 
