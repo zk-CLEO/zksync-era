@@ -28,7 +28,6 @@ jobs:
           echo $(pwd)/bin >> $GITHUB_PATH
           echo IN_DOCKER=1 >> .env
           npm install -g yarn
-          cargo install sqlx-cli --version 0.5.13
 
       - name: Start services
         env:
