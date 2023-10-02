@@ -17,17 +17,11 @@ jobs:
         with:
           submodules: "recursive"
 
-      - name: Use Node.js 18.18.0
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18.18.0'
-
       - name: Setup environment
         run: |
           echo ZKSYNC_HOME=$(pwd) >> $GITHUB_ENV
           echo $(pwd)/bin >> $GITHUB_PATH
           echo IN_DOCKER=1 >> .env
-          npm install -g yarn
 
       - name: Start services
         env:
@@ -35,15 +29,15 @@ jobs:
         run: |
           docker-compose -f ${RUNNER_COMPOSE_FILE} pull
           docker-compose -f ${RUNNER_COMPOSE_FILE} up --build -d zk
+          ci_run sccache --start-server
 
       - name: Init
         run: |
-          zk
-          zk config compile
-          zk db setup
+          ci_run zk
+          ci_run zk config compile
+          ci_run zk db setup
 
       - name: Prover unit tests
         run: |
-          cd prover
           # Not all tests are enabled since, prover and setup_key_generator_and_server requires bellman-cuda to be present
-          zk f cargo test --release -p zksync_witness_generator -p vk_setup_data_generator_server_fri -p zksync_prover_fri -p zksync_witness_vector_generator -p zksync_prover_fri_utils
+          ci_run zk f cargo test --release -p zksync_witness_generator -p vk_setup_data_generator_server_fri -p zksync_prover_fri -p zksync_witness_vector_generator -p zksync_prover_fri_utils
