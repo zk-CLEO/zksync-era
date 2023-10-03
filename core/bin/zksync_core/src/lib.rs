@@ -988,7 +988,7 @@ async fn run_ws_api<G: L1GasPriceProvider + Send + Sync + 'static>(
     )
     .await;
 
-    web3::ApiBuilder::jsonrpc_backend(internal_api.clone(), replica_connection_pool)
+    web3::ApiBuilder::jsonrpsee_backend(internal_api.clone(), replica_connection_pool)
         .ws(api_config.web3_json_rpc.ws_port)
         .with_filter_limit(api_config.web3_json_rpc.filters_limit())
         .with_subscriptions_limit(api_config.web3_json_rpc.subscriptions_limit())
