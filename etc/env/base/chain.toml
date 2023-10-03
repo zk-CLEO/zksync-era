@@ -8,10 +8,10 @@ network="localhost"
 zksync_network="localhost"
 # ID of current zkSync network treated as ETH network ID.
 # Used to distinguish zkSync from other Web3-capable networks.
-zksync_network_id=270
+zksync_network_id=1302
 
 [chain.state_keeper]
-fee_account_addr="0xde03a0B5963f75f1C8485B355fF6D30f3093BDE7"
+fee_account_addr="0xA75FA623F47cf98dA3899f66c8b1382209D718d3"
 
 # Denotes the amount of slots for transactions in the block.
 transaction_slots=250
