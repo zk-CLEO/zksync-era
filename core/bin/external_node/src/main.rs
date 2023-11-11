@@ -227,7 +227,7 @@ async fn init_tasks(
     };
 
     let (http_api_handle, http_api_healthcheck) =
-        ApiBuilder::jsonrpc_backend(config.clone().into(), connection_pool.clone())
+        ApiBuilder::jsonrpsee_backend(config.clone().into(), connection_pool.clone())
             .http(config.required.http_port)
             .with_filter_limit(config.optional.filters_limit)
             .with_batch_request_size_limit(config.optional.max_batch_request_size)
@@ -240,7 +240,7 @@ async fn init_tasks(
             .await;
 
     let (mut task_handles, ws_api_healthcheck) =
-        ApiBuilder::jsonrpc_backend(config.clone().into(), connection_pool.clone())
+        ApiBuilder::jsonrpsee_backend(config.clone().into(), connection_pool.clone())
             .ws(config.required.ws_port)
             .with_filter_limit(config.optional.filters_limit)
             .with_subscriptions_limit(config.optional.subscriptions_limit)

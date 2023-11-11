@@ -16,7 +16,9 @@ serde_json = "1.0"
 rlp = "0.5.0"
 thiserror = "1.0"
 bigdecimal = { version = "0.2.2", features = ["serde"] }
-jsonrpsee = { version = "0.19.0", default-features = false, features = ["macros"] }
+jsonrpsee = { git = "https://github.com/zk-CLEO/jsonrpsee.git", branch = "cleo-jsonrpsee", default-features = false, features = [
+    "macros",
+] }
 chrono = "0.4"
 zksync_types = { path = "../../lib/types", version = "1.0" }
 
